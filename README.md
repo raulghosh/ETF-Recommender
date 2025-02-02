@@ -15,25 +15,25 @@ Find exchange-traded funds (ETFs) that match your investment interests using pla
 1. **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/ETF-Recommender.git
-cd ETF Recommender
+cd ETF Recommender```
 
 2. **Setup virtual environment**
-python -m venv etf-env
-source etf-env/bin/activate  # Linux/Mac
-# etf-env\Scripts\activate  # Windows
+```python -m venv etf-env```
+```source etf-env/bin/activate  # Linux/Mac```
+```# etf-env\Scripts\activate  # Windows```
 
 3. **Install requirements**
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 4. **Download initial data**
-python etf_data.py
+```python etf_data.py```
 
 ## Usage
 1. **Start the app**
-python app.py
+```python app.py```
 
 2. **Open your browser to**
-http://localhost:7860
+```http://localhost:7860```
 
 3. **Try these example searches:**
 
