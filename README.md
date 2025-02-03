@@ -24,25 +24,25 @@ source etf-env/bin/activate  # Linux/Mac
 # etf-env\Scripts\activate  # Windows
 ```
 
-3. **Install requirements***
+3. **Install requirements**
 ```pip install -r requirements.txt
 ```
 
-4. ***Download initial data**
+4. **Download initial data**
 ```python etf_data.py
 ```
 
 ## Usage 💻
 
-1. ***Start the app***
+1. **Start the app**
 ```python app.py
 ```
 
-2. ***Open your browser to***
+2. **Open your browser to**
 ```http://localhost:7860
 ```
 
-3. ***Try these example searches:***
+3. **Try these example searches:**
 
 "Technology innovation ETFs"
 
