@@ -63,12 +63,76 @@ source etf-env/bin/activate  # Linux/Mac
 
 ## Project Structure 📂
 
-etf-semantic-search/
-├── etf_data.py         # Gets ETF information
-├── search_engine.py    # Finds similar ETFs
-├── app.py              # Web interface
-├── requirements.txt    # Required packages
-└── README.md           # This documentation
+```
+etf-recommendation-engine/
+├── .env                    # Environment variables
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── setup.py
+│
+├── config/
+│   ├── logging.conf        # Logging configuration
+│   └── settings.py         # Global settings (DB connections, API keys)
+│
+├── data/
+│   ├── raw/                # Raw scraped data (JSON/HTML/CSV)
+│   ├── processed/          # Cleaned/transformed data
+│   └── external/           # Static reference data (e.g., sector classifications)
+│
+├── docs/                   # Documentation
+│
+├── etl/
+│   ├── scrapers/           # Individual website scrapers
+│   │   ├── ishares.py
+│   │   ├── vanguard.py
+│   │   └── yfinance_api.py
+│   │
+│   ├── transformers/       # Data cleaning scripts
+│   │   ├── clean_etf_metadata.py
+│   │   └── normalize_holdings.py
+│   │
+│   └── loaders/            # Database loading scripts
+│       ├── postgres_loader.py
+│       └── mongo_loader.py
+│
+├── src/                    # Core application logic
+│   ├── models/             # Database models
+│   │   ├── etf_metadata.py
+│   │   └── holdings.py
+│   │
+│   ├── services/           # Business logic
+│   │   ├── etf_search.py
+│   │   └── recommender.py
+│   │
+│   └── utils/              # Helper functions
+│       ├── logger.py
+│       ├── http_client.py  # Custom requests wrapper
+│       └── data_validation.py
+│
+├── tests/                  # Unit and integration tests
+│   ├── unit/
+│   └── integration/
+│
+├── notebooks/              # Jupyter notebooks for exploration
+│   ├── ETF Data Analysis.ipynb
+│   └── Scraping Tests.ipynb
+│
+├── frontend/               # Web app (React/Vue)
+│   ├── public/
+│   ├── src/
+│   │   ├── components/     # ETF cards, search bar
+│   │   └── views/          # Main pages
+│
+└── backend/                # FastAPI backend
+    ├── main.py
+    ├── routes/
+    │   ├── etf_routes.py
+    │   └── chat_routes.py
+    └── ai/                 # NLP components
+        ├── embeddings.py
+        └── semantic_search.py
+```
 
 ## Contributing
 
