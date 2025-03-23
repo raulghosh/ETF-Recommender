@@ -13,33 +13,39 @@ Find exchange-traded funds (ETFs) that match your investment interests using pla
 ## Installation 🛠️
 
 1. **Clone the repository**
-```bash
+```
+bash
 git clone https://github.com/yourusername/ETF-Recommender.git
 cd ETF-Recommender
 ```
 
 2. **Setup virtual environment**
-```python -m venv etf-env
+```
+python -m venv etf-env
 source etf-env/bin/activate  # Linux/Mac
 # etf-env\Scripts\activate  # Windows
 ```
 
 3. **Install requirements**
-```pip install -r requirements.txt
+```
+pip install -r requirements.txt
 ```
 
 4. **Download initial data**
-```python etf_data.py
+```
+python etf_data.py
 ```
 
 ## Usage 💻
 
 1. **Start the app**
-```python app.py
+```
+python app.py
 ```
 
 2. **Open your browser to**
-```http://localhost:7860
+```
+http://localhost:7860
 ```
 
 3. **Try these example searches:**
@@ -64,74 +70,36 @@ source etf-env/bin/activate  # Linux/Mac
 ## Project Structure 📂
 
 ```
-etf-recommendation-engine/
-├── .env                    # Environment variables
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── setup.py
+etf-recommender/
+├── data/
+│   ├── llm_generated/
+│   │   ├── etf_raw/          # Raw LLM outputs (JSON)
+│   │   └── etf_processed/    # Cleaned/validated data
+│   └── external/             # Reference data (e.g., sector classifications)
+│
+├── llm/
+│   ├── prompts/              # System prompts for different ETF types
+│   │   ├── equity_prompt.txt
+│   │   └── fixed_income_prompt.txt
+│   ├── schemas/              # JSON schemas for validation
+│   └── etl.py                # LLM data generation pipeline
+│
+├── database/
+│   ├── models/               # SQLAlchemy models
+│   ├── vector_db/            # FAISS/Pinecone embeddings
+│   └── etl.py                # DB loading scripts
+│
+├── app/
+│   ├── frontend/             # Streamlit/Gradio UI
+│   └── api/                  # FastAPI endpoints
 │
 ├── config/
-│   ├── logging.conf        # Logging configuration
-│   └── settings.py         # Global settings (DB connections, API keys)
+│   ├── settings.py           # API keys, DB connections
+│   └── constants.py          # ETF categories, validation rules
 │
-├── data/
-│   ├── raw/                # Raw scraped data (JSON/HTML/CSV)
-│   ├── processed/          # Cleaned/transformed data
-│   └── external/           # Static reference data (e.g., sector classifications)
-│
-├── docs/                   # Documentation
-│
-├── etl/
-│   ├── scrapers/           # Individual website scrapers
-│   │   ├── ishares.py
-│   │   ├── vanguard.py
-│   │   └── yfinance_api.py
-│   │
-│   ├── transformers/       # Data cleaning scripts
-│   │   ├── clean_etf_metadata.py
-│   │   └── normalize_holdings.py
-│   │
-│   └── loaders/            # Database loading scripts
-│       ├── postgres_loader.py
-│       └── mongo_loader.py
-│
-├── src/                    # Core application logic
-│   ├── models/             # Database models
-│   │   ├── etf_metadata.py
-│   │   └── holdings.py
-│   │
-│   ├── services/           # Business logic
-│   │   ├── etf_search.py
-│   │   └── recommender.py
-│   │
-│   └── utils/              # Helper functions
-│       ├── logger.py
-│       ├── http_client.py  # Custom requests wrapper
-│       └── data_validation.py
-│
-├── tests/                  # Unit and integration tests
-│   ├── unit/
-│   └── integration/
-│
-├── notebooks/              # Jupyter notebooks for exploration
-│   ├── ETF Data Analysis.ipynb
-│   └── Scraping Tests.ipynb
-│
-├── frontend/               # Web app (React/Vue)
-│   ├── public/
-│   ├── src/
-│   │   ├── components/     # ETF cards, search bar
-│   │   └── views/          # Main pages
-│
-└── backend/                # FastAPI backend
-    ├── main.py
-    ├── routes/
-    │   ├── etf_routes.py
-    │   └── chat_routes.py
-    └── ai/                 # NLP components
-        ├── embeddings.py
-        └── semantic_search.py
+└── scripts/
+    ├── validation/           # Data quality checks
+    └── deployment/           # Cloud deployment configs
 ```
 
 ## Contributing
